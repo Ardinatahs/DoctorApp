@@ -1,13 +1,13 @@
 import React from 'react';
-import {Image, StyleSheet, Text, View, TouchableOpacity} from 'react-native';
-import {colors, fonts} from '../../../utils';
+import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {
-  IconNext,
   IconEditProfile,
   IconLanguage,
+  IconNext,
   IconRate,
-  IconHelp,
+  IconSignOut,
 } from '../../../assets';
+import {colors, fonts} from '../../../utils';
 
 const List = ({profile, name, desc, type, onPress, icon}) => {
   const Icon = () => {
@@ -20,8 +20,8 @@ const List = ({profile, name, desc, type, onPress, icon}) => {
     if (icon === 'rate') {
       return <IconRate />;
     }
-    if (icon === 'help') {
-      return <IconHelp />;
+    if (icon === 'sign-out') {
+      return <IconSignOut />;
     }
     return <IconEditProfile />;
   };
@@ -54,11 +54,11 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontFamily: fonts.primary.normal,
     color: colors.text.primary,
+    textTransform: 'capitalize',
   },
   desc: {
     fontSize: 12,
     fontFamily: fonts.primary[300],
     color: colors.text.secondary,
-    textTransform: 'capitalize',
   },
 });

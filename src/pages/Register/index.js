@@ -9,7 +9,7 @@ const Register = ({navigation}) => {
   const dispatch = useDispatch();
   const [form, setForm] = useForm({
     fullName: '',
-    category: 'dokter umum',
+    category: 'Dokter Covid-19',
     university: '',
     str_number: '',
     hospital_address: '',
@@ -20,28 +20,33 @@ const Register = ({navigation}) => {
   const [itemCategory] = useState([
     {
       id: 1,
-      label: 'Dokter Umum',
-      value: 'dokter umum',
+      label: 'Dokter Covid-19',
+      value: 'Dokter Covid-19',
     },
     {
       id: 2,
-      label: 'Psikiater',
-      value: 'psikiater',
+      label: 'Dokter Umum',
+      value: 'Dokter Umum',
     },
     {
       id: 3,
-      label: 'Dokter Obat',
-      value: 'dokter obat',
+      label: 'Dokter Saraf',
+      value: 'Dokter Saraf',
     },
     {
       id: 4,
-      label: 'Dokter Anak',
-      value: 'dokter anak',
+      label: 'Dokter Gigi',
+      value: 'Dokter Gigi',
     },
     {
       id: 5,
-      label: 'Dokter Bedah',
-      value: 'dokter bedah',
+      label: 'Dokter Mata',
+      value: 'Dokter Mata',
+    },
+    {
+      id: 6,
+      label: 'Dokter Anak',
+      value: 'Dokter Anak',
     },
   ]);
 
@@ -93,65 +98,63 @@ const Register = ({navigation}) => {
   return (
     <View style={styles.page}>
       <Header onPress={() => navigation.goBack()} title="Daftar Akun" />
-      <View style={styles.content}>
-        <ScrollView showsVerticalScrollIndicator={false}>
-          <Input
-            label="Full Name"
-            value={form.fullName}
-            onChangeText={value => setForm('fullName', value)}
-          />
-          <Gap height={24} />
-          <Input
-            label="Kategori"
-            value={form.category}
-            onValueChange={value => setForm('category', value)}
-            select
-            selectItem={itemCategory}
-          />
-          <Gap height={24} />
-          <Input
-            label="Universitas"
-            value={form.university}
-            onChangeText={value => setForm('university', value)}
-          />
-          <Gap height={24} />
-          <Input
-            label="Nomor STR"
-            value={form.str_number}
-            onChangeText={value => setForm('str_number', value)}
-          />
-          <Gap height={24} />
-          <Input
-            label="Alamat Rumah Sakit"
-            value={form.hospital_address}
-            onChangeText={value => setForm('hospital_address', value)}
-          />
-          <Gap height={24} />
-          <Input
-            label="Jenis Kelamin"
-            value={form.gender}
-            onValueChange={value => setForm('gender', value)}
-            select
-            selectItem={itemGender}
-          />
-          <Gap height={24} />
-          <Input
-            label="Email"
-            value={form.email}
-            onChangeText={value => setForm('email', value)}
-          />
-          <Gap height={24} />
-          <Input
-            label="Password"
-            value={form.password}
-            onChangeText={value => setForm('password', value)}
-            secureTextEntry
-          />
-          <Gap height={40} />
-          <Button title="Continue" onPress={onContinue} />
-          <Gap height={40} />
-        </ScrollView>
-      </View>
+      <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
+        <Input
+          label="Full Name"
+          value={form.fullName}
+          onChangeText={value => setForm('fullName', value)}
+        />
+        <Gap height={24} />
+        <Input
+          label="Kategori"
+          value={form.category}
+          onValueChange={value => setForm('category', value)}
+          select
+          selectItem={itemCategory}
+        />
+        <Gap height={24} />
+        <Input
+          label="Universitas"
+          value={form.university}
+          onChangeText={value => setForm('university', value)}
+        />
+        <Gap height={24} />
+        <Input
+          label="Nomor STR"
+          value={form.str_number}
+          onChangeText={value => setForm('str_number', value)}
+        />
+        <Gap height={24} />
+        <Input
+          label="Alamat Rumah Sakit"
+          value={form.hospital_address}
+          onChangeText={value => setForm('hospital_address', value)}
+        />
+        <Gap height={24} />
+        <Input
+          label="Jenis Kelamin"
+          value={form.gender}
+          onValueChange={value => setForm('gender', value)}
+          select
+          selectItem={itemGender}
+        />
+        <Gap height={24} />
+        <Input
+          label="Email"
+          value={form.email}
+          onChangeText={value => setForm('email', value)}
+        />
+        <Gap height={24} />
+        <Input
+          label="Password"
+          value={form.password}
+          onChangeText={value => setForm('password', value)}
+          secureTextEntry
+        />
+        <Gap height={40} />
+        <Button title="Continue" onPress={onContinue} />
+        <Gap height={40} />
+      </ScrollView>
     </View>
   );
 };

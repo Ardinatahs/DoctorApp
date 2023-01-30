@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {ScrollView, StyleSheet, View} from 'react-native';
-import ImagePicker from 'react-native-image-picker';
+import {launchImageLibrary} from 'react-native-image-picker';
 import {ILNullPhoto} from '../../assets';
 import {Button, Gap, Header, Input, Profile} from '../../components';
 import {Fire} from '../../config';
@@ -78,17 +78,19 @@ const UpdateProfile = ({navigation}) => {
   };
 
   const getImage = () => {
-    ImagePicker.launchImageLibrary(
-      {quality: 0.5, maxWidth: 200, maxHeight: 200},
+    launchImageLibrary(
+      {quality: 0.5, maxWidth: 200, maxHeight: 200, includeBase64: true},
       response => {
         if (response.didCancel || response.error) {
           showError('oops, sepertinya anda tidak memilih foto nya?');
         } else {
-          const source = {uri: response.uri};
+          const source = {uri: response.assets[0].uri};
 
           setProfile({
             ...profile,
-            photoForDB: `data:${response.type};base64, ${response.data}`,
+            photoForDB: `data:${response.assets[0].type};base64, ${
+              response.assets[0].base64
+            }`,
           });
           setPhoto(source);
         }

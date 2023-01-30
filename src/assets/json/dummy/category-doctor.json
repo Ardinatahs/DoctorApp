@@ -1,23 +1,28 @@
 {
-    "data": [{
-            "id": 1,
-            "category": "dokter umum"
-        },
-        {
-            "id": 2,
-            "category": "psikiater"
-        },
-        {
-            "id": 3,
-            "category": "dokter obat"
-        },
-        {
-            "id": 4,
-            "category": "dokter umum"
-        },
-        {
-            "id": 5,
-            "category": "psikiater"
-        }
-    ]
+  "data": [
+    {
+      "id": 1,
+      "category": "Dokter Covid-19"
+    },
+    {
+      "id": 2,
+      "category": "Dokter Umum"
+    },
+    {
+      "id": 3,
+      "category": "Dokter Saraf"
+    },
+    {
+      "id": 4,
+      "category": "Dokter Gigi"
+    },
+    {
+      "id": 5,
+      "category": "Dokter Mata"
+    },
+    {
+      "id": 6,
+      "category": "Dokter Anak"
+    }
+  ]
 }

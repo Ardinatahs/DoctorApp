@@ -18,6 +18,7 @@ import IconRate from './ic-rate.svg';
 import IconHelp from './ic-help.svg';
 import IconMale from './ic-male.svg';
 import IconFemale from './ic-female.svg';
+import IconSignOut from './ic-sign-out.svg';
 
 export {
   IconBackDark,
@@ -40,4 +41,5 @@ export {
   IconHelp,
   IconMale,
   IconFemale,
+  IconSignOut,
 };

@@ -1,36 +1,44 @@
-import React from 'react';
-import {StyleSheet, Text, View, ImageBackground} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {ImageBackground, StyleSheet, Text, View, Linking} from 'react-native';
 import {ILHospitalBG} from '../../assets/illustration';
-import {fonts, colors} from '../../utils';
 import {ListHospital} from '../../components';
-import {DummyHospital1, DummyHospital2, DummyHospital3} from '../../assets';
+import {Fire} from '../../config';
+import {colors, fonts, showError} from '../../utils';
 
 const Hospitals = () => {
+  const [hospitals, setHospitals] = useState([]);
+  useEffect(() => {
+    Fire.database()
+      .ref('hospitals/')
+      .once('value')
+      .then(res => {
+        if (res.val()) {
+          setHospitals(res.val());
+        }
+      })
+      .catch(err => {
+        showError(err.message);
+      });
+  }, []);
   return (
     <View style={styles.page}>
       <ImageBackground source={ILHospitalBG} style={styles.background}>
-        <Text style={styles.title}>Nearby Hospitals</Text>
+        <Text style={styles.title}>Rumah Sakit Terdekat</Text>
         <Text style={styles.desc}>3 tersedia</Text>
       </ImageBackground>
       <View style={styles.content}>
-        <ListHospital
-          type="Rumah Sakit"
-          name="Citra Bunga Merdeka"
-          address="Jln. Surya Sejahtera 20"
-          pic={DummyHospital1}
-        />
-        <ListHospital
-          type="Rumah Sakit Anak"
-          name="Happy Family Kids"
-          address="Jln. Surya Sejahtera 20"
-          pic={DummyHospital2}
-        />
-        <ListHospital
-          type="Rumah Sakit Jiwa"
-          name="Tingkatan Paling Atas"
-          address="Jln. Surya Sejahtera 20"
-          pic={DummyHospital3}
-        />
+        {hospitals.map(item => {
+          return (
+            <ListHospital
+              key={item.id}
+              type={item.type}
+              name={item.name}
+              address={item.address}
+              pic={item.image}
+              onPress={() => Linking.openURL(`${item.link}`, item)}
+            />
+          );
+        })}
       </View>
     </View>
   );

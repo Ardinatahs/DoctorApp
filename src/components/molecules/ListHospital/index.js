@@ -1,17 +1,17 @@
 import React from 'react';
-import {StyleSheet, Text, View, Image} from 'react-native';
+import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
 import {colors, fonts} from '../../../utils';
 
-const ListHospital = ({type, name, address, pic}) => {
+const ListHospital = ({onPress, type, name, address, pic}) => {
   return (
-    <View style={styles.container}>
-      <Image source={pic} style={styles.picture} />
+    <TouchableOpacity style={styles.container} onPress={onPress}>
+      <Image source={{uri: pic}} style={styles.picture} />
       <View>
         <Text style={styles.title}>{type}</Text>
         <Text style={styles.title}>{name}</Text>
         <Text style={styles.address}>{address}</Text>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 

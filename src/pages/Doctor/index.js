@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {ScrollView, StyleSheet, Text, View} from 'react-native';
+import {ScrollView, StyleSheet, Text, View, Linking} from 'react-native';
 import {Gap, HomeProfile, NewsItem} from '../../components';
 import {Fire} from '../../config';
 import {colors, fonts, showError, getData} from '../../utils';
@@ -63,6 +63,7 @@ const Doctor = ({navigation}) => {
                 title={item.title}
                 date={item.date}
                 image={item.image}
+                onPress={() => Linking.openURL(`${item.link}`, item)}
               />
             );
           })}
